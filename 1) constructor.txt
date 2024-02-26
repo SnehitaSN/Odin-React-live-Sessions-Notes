@@ -1,0 +1,95 @@
+1) constructor:
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+class Music extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {instrument: "Guitar"};
+    }
+    render() {
+     return (
+     <h1>I know how to play {this.state.instrument}</h1>
+     );
+    }
+  }
+  
+  ReactDOM.render(<Music />, document.getElementById('root'));
+
+***************************************
+***************************************
+
+2) getDerivedStateFromProps()
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+class Music extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { instrument: "Guitar" };
+  }
+  static getDerivedStateFromProps(props, state) {
+    return { instrument: props.New };
+  }
+  render() {
+    return <h1>I know how to play {this.state.instrument}</h1>;
+  }
+}
+ReactDOM.render(<Music New="Drums" />, document.getElementById("root"));
+
+*****************************************************************************
+
+4) componentDidMount() 
+
+import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
+
+class Music extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {instrument: "Guitar"};
+    }
+    componentDidMount() {
+      setTimeout(() => {
+        this.setState({instrument: "Drums"})
+      }, 1000)
+    }
+    render() {
+      return (
+        <h1>I know how to play {this.state.instrument}</h1>
+      );
+    }
+  }
+  
+  ReactDOM.render(<Music />, document.getElementById('root'));
+
+******************************************************************************
+
+
+(4) getSnapshotBeforeUpdate()
+
+class Music extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {Instrument : "Guitar"};
+    }
+    componentDidMount() {
+      setTimeout(() => {this.setState({Instrument: "Drums"})}, 2000)
+    }
+    getSnapshotBeforeUpdate(prevProps, prevState){
+    document.getElementById("CON1").innerHTML = "Before the update, the Instrument was " + prevState.Instrument;
+    }
+    componentDidUpdate() {
+      document.getElementById("CON2").innerHTML = "The updated Instrument is " + this.state.Instrument;
+    }
+    render() {
+      return (
+        <div>
+          <h1>I know how to play {this.state.Instrument}</h1>
+          <div id="CON1"></div>
+          <div id="CON2"></div>
+        </div>
+      ); }}
+  ReactDOM.render(<Music />, document.getElementById('root'));

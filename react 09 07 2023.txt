@@ -1,0 +1,111 @@
+// const re1 = React.createElement("h1",null,"This is first heading")
+// const re2 = React.createElement("h2",{style:{color:"red"}},"This is second heading")
+// const re3 = React.createElement("h3",null,"This is last heading")
+
+
+// class LoginComp extends React.Component {
+//   render(){
+//     return(
+//       <div>
+//         <p>Welcome to  class component</p>
+//         <h1>
+//           This is class react
+//         </h1>
+//       </div>
+//     )
+//   }
+
+// }
+
+
+
+// class Header extends React.Component{
+//   render(){
+//     return(
+//       <div>
+//         <h1>This is Header</h1>
+//       </div>
+//     )
+//   }
+// }
+
+
+// class Footer extends React.Component{
+//   render(){
+//     return(
+//       <div>
+//         <h1>This is Footer</h1>
+//       </div>
+//     )
+//   }
+// }
+
+// ReactDOM.render(<Header/>,document.getElementById("root"))
+
+
+// ReactDOM.render(<Footer/>,document.getElementById("root"))
+
+
+// ReactDOM.render(<LoginComp/>,document.getElementById("root"))
+
+******************************************************************************
+
+
+// class Counter extends React.Component {
+//   constructor(props) {
+//     super(props);
+
+//     this.state = {
+//       counter: 0
+//     };
+
+//     this.handleClick = this.handleClick.bind(this);
+//   }
+
+//    handleClick() {
+//     this.setState(
+//       (prevState) => {
+//         return {
+//           counter: prevState.counter + 1
+//         };
+//       },
+//       () => console.log("counter", this.state.counter)
+//     );
+//   }
+
+//   render() {
+//     const { counter } = this.state;
+
+//     return (
+//       <div>
+//         <button onClick={this.handleClick}>Increment counter</button>
+//         <div>Counter value is {counter}</div>
+//       </div>
+//     );
+//   }
+// }
+
+// const rootElement = document.getElementById("root");
+// ReactDOM.render(<Counter />, rootElement);
+
+//*****LISTS************
+
+
+function NewComp(props)
+{
+  const listItems = myList.map((item1) => 
+  <li key={item1.id}> 
+    {item1.value}
+    </li>
+ );
+ return ( <ul>{listItems} </ul> )
+}
+
+const myList = [ 
+     {id: 'a', value : 'India'},
+     {id: 'b', value : 'Canada'},
+     {id: 'c', value : 'France'},
+     {id: 'd', value : 'Germnay'},
+     {id: 'e', value : 'Sri Lanka'}
+     ];
+ReactDOM.render(<NewComp myList = {myList}/> ,document.getElementById('root'));
